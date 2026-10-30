@@ -50,8 +50,8 @@ describe('digest routes', () => {
     it('returns 200 for 2026-01-01 and contains job names', async () => {
       const res = await createApp(config).request('/digest/2026-01-01');
       expect(res.status).toBe(200);
+      expect(res.headers.get('content-type')).toContain('text/html');
       const html = await res.text();
-      expect(html).toContain('text/html');
       expect(html).toContain('a/backend');
       expect(html).toContain('b/frontend');
     });
