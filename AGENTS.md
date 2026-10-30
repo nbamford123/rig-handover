@@ -43,6 +43,9 @@ Shared skills live in `.agents/skills/`, one folder each, `SKILL.md` inside. Tha
 one source for every harness on the team. If yours loads skills from somewhere else, point it
 here (a link or a config entry). Don't copy: copies drift.
 
+- Claude Code reads `.claude/skills/`. Link the whole folder once, from the repo root:
+  `ln -s ../.agents/skills .claude/skills`. The link is git-ignored; each clone makes its own.
+
 ## Rules
 
 - Never commit `.env`, tokens or previews.
