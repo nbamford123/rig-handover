@@ -39,5 +39,13 @@ export function createApp(config: RigConfig = loadConfig()) {
     );
   });
 
+  // Same reader, same order as the page (ADR 0001): agents read this one.
+  app.get('/api/digest/:night', (c) => {
+    const night = c.req.param('night');
+    const read = readNight(config.runsDir, night);
+    if (!read) return c.json({ error: 'no such night', night }, 404);
+    return c.json(read);
+  });
+
   return app;
 }
